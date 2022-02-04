@@ -7,8 +7,11 @@
       <input type="text" id="post-title" name="post-title" />
     </div>
     <div>
-      <label for="post-url">Link</label>
-      <input id="post-url" name="post-url" />
+      <input id="post-url" name="post-url" type="hidden"/>
+    </div>
+    <div>
+      <label for="post-description">Description</label>
+      <input id="post-description" name="post-description" />
     </div>
     <button type="submit" class="btn">Create</button>
   </form>
@@ -28,6 +31,10 @@ var myWidget = cloudinary.createUploadWidget({
       var inputBox = document.getElementById('post-url');
       inputBox.value = result.info.url;
       console.log(inputBox.value);
+      var imageConatiner = document.getElementById('image-container');
+      var imageRender = document.createElement('img');
+      imageRender.setAttribute('src', inputBox.value);
+      imageConatiner.appendChild(imageRender);
     }
    }
 )
@@ -36,6 +43,8 @@ document.getElementById("upload_widget").addEventListener("click", function(){
     myWidget.open();
   }, false);
 </script>
+
+<div id="image-container"></div>
 
 {{#if posts.length}}
 <section>
