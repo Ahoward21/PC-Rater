@@ -1,8 +1,12 @@
 <article class="post">
   <div class="title">
     <h2>{{title}}</h2>
-    <img src={{post_url}} />
+
   </div>
+      <img src={{post_url}} />
+    <div>
+      {{post_description}}
+    </div>
   <div class="meta">
     {{vote_count}} {{format_plural "point" vote_count}} by {{user.username}} on {{format_date created_at}}
     |
