@@ -3,7 +3,7 @@
     <h2>{{title}}</h2>
 
   </div>
-      <img src={{post_url}} />
+      <a href="/post/{{id}}"><img src={{post_url}} /></a>
     <div>
       {{post_description}}
     </div>
@@ -11,5 +11,32 @@
     {{vote_count}} {{format_plural "point" vote_count}} by {{user.username}} on {{format_date created_at}}
     |
     <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
+    <button id="btn-{{id}}" type="button" class="upvote-btn">Upvote</button>
+    <script>
+      async function upvoteClickHandler(event) {
+  event.preventDefault();
+
+  const id = {{id}};
+  const response = await fetch('/api/posts/upvote', {
+    method: 'PUT',
+    body: JSON.stringify({
+      post_id: id
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+
+  if (response.ok) {
+    document.location.reload();
+  } else {
+    alert(response.statusText);
+  }
+}
+      var id = {{id}}
+      document.getElementById(`btn-${id}`).addEventListener('click', upvoteClickHandler);
+    </script>
+
   </div>
 </article>
+
