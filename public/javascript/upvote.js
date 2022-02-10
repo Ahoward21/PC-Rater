@@ -21,8 +21,4 @@ async function upvoteClickHandler(event) {
   }
 }
 
-//document.querySelector('.upvote-btn').addEventListener('click', upvoteClickHandler);
-// btns = document.getElementsByClassName("upvote-btn");
-//     for (var i = 0; i < btns.length; i++) {
-//         btns[i].addEventListener("click", upvoteClickHandler, false);
-//     }
+document.querySelector('.upvote-btn').addEventListener('click', upvoteClickHandler);

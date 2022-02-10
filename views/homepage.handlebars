@@ -1,8 +1,11 @@
 <ol class="post-list">
-  {{#each posts as |post|}}
+{{#if loggedIn}}
+{{#each posts as |post|}}
   <li>
     {{> post-info post }}
+    
     <button id="btn-{{id}}" type="button" class="upvote-btn">Upvote</button>
+
     <script>
       async function upvoteClickHandler(event) {
   event.preventDefault();
@@ -27,6 +30,14 @@
       var id = {{id}}
       document.getElementById(`btn-${id}`).addEventListener('click', upvoteClickHandler);
     </script>
+  
   </li>
   {{/each}}
+  {{else}}
+  {{#each posts as |post|}}
+  <li>
+    {{> post-info post }}
+  </li>
+  {{/each}}
+  {{/if}}
 </ol>
