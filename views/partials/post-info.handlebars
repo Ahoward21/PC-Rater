@@ -3,7 +3,7 @@
     <h2>{{title}}</h2>
 
   </div>
-      <img src={{post_url}} />
+      <a href="/post/{{id}}"><img src={{post_url}} /></a>
     <div>
       {{post_description}}
     </div>
@@ -13,3 +13,4 @@
     <a href="/post/{{id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
   </div>
 </article>
+
